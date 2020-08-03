@@ -66,10 +66,11 @@ EX 2)
                 const multiplyThree = multiplyX(3)
                 const formular = x => addFour(multiplyThree(multiplyTwo(x)))     
 ```                
-그러나, `const formular = x => addFour(multiplyThree(multiplyTwo(x)))` 이 함수는 적용순서가 오른쪽을 왼쪽 방향이어서 사람이 단 번에 이해하긴 어렵다.
-즉 코드의 가독성이 떨어진다.
+그러나, `const formular = x => addFour(multiplyThree(multiplyTwo(x)))` 
+이 함수는 적용순서가 오른쪽에서 왼쪽 방향이어서 사람이 단 번에 이해하긴 어렵다.
+즉 코드의 가독성이 떨어진다는 소리
 그래서 이러한 실수를 한기 위해 커링 함수를 조합하는 `compose()`함수를 만들면 된다!
-reduce()를 사용하면 함수를 조합하는 함수를 만들 수 있다.
+reduce()를 사용하면 함수를 조합하는 함수를 만들 수 있다.(reduce의 목적은 배열을 원하는 형태로 변경하는 것이다!)
 
 ``` js
     // 1.
@@ -133,8 +134,10 @@ reduce()를 사용하면 함수를 조합하는 함수를 만들 수 있다.
  const formularWithCompose = compose([multiplyTwo, multiplyThree, addFour])
 
 ```
-... ro어렵잖아...
-이곳은 공부를 좀 더 해야겠다...
+
+**영상 시청 후 업데이트 예정...**
+
+
 
 
 

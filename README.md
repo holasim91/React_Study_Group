@@ -39,7 +39,7 @@ EX)
             const result = multiplyX(4)(3)
 ```               
 여기서 다시 한 번 상기하자..
-커링의 장점은 '인자를 나누어 받을 수 있다!!'는 것을..!
+커링의 장점은 **인자를 나누어 받을 수 있다!!** 는 것을..!
 
 EX 2)
 ((x*a)*b)+c 
@@ -81,7 +81,7 @@ reduce()를 사용하면 함수를 조합하는 함수를 만들 수 있다.
         }     
     }, function(k) return{k}) //function(k) return{k}는 reduce()의 초깃값이다.
 ```
-이것을 단게적으로 분석하자면..
+이것을 단계적으로 분석하자면..
 ```js
 // 1. 초깃값과 multiplyTwo()함수의 조합
     function(value){
@@ -129,13 +129,13 @@ reduce()를 사용하면 함수를 조합하는 함수를 만들 수 있다.
      )
  }
  
- 
+
  const formularWithCompose = compose([multiplyTwo, multiplyThree, addFour])
 
 ```
 ... ro어렵잖아...
 이곳은 공부를 좀 더 해야겠다...
-후..
+
 
 
 

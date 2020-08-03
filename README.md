@@ -69,12 +69,70 @@ EX 2)
 그러나, `const formular = x => addFour(multiplyThree(multiplyTwo(x)))` 이 함수는 적용순서가 오른쪽을 왼쪽 방향이어서 사람이 단 번에 이해하긴 어렵다.
 즉 코드의 가독성이 떨어진다.
 그래서 이러한 실수를 한기 위해 커링 함수를 조합하는 `compose()`함수를 만들면 된다!
+reduce()를 사용하면 함수를 조합하는 함수를 만들 수 있다.
 
 ``` js
-    [multiplyTwo, multiplyThree, addFour].reduce(<func>, function(k) return{k})
-    //<func> 이곳에 함수를 조합하기 위한 코드를 넣을것이다.
-    //function(k) return{k}는 reduce()의 초깃값이다.
+    // 1.
+    //배열로 전달할 커링 함수들을 하나로 조합하기위해 구성한 함수
+    [multiplyTwo, multiplyThree, addFour].reduce(
+        function(prevFunc, nextFunc){
+        return function(value){
+            return nextFunc(prevFunc(value))
+        }     
+    }, function(k) return{k}) //function(k) return{k}는 reduce()의 초깃값이다.
 ```
+이것을 단게적으로 분석하자면..
+```js
+// 1. 초깃값과 multiplyTwo()함수의 조합
+    function(value){
+        return multiplyTwo((k => k)(value))
+    }
+
+// 2. 1의 결괏값과  multiplyThree()함수의 조합
+    function(value){
+        return multiplyThree(
+            function(value){
+                return multiplyTwo(
+                    (k => k)(value)
+                )   
+            }(value)
+        )
+    }
+
+// 3. 2의 결괏값과  addFour()함수의 조합
+    function(value){
+        return addFour(
+            function(value){
+                return multiplyThree(
+                    function(value){
+                        return multiplyTwo(
+                            (k => k)(value)
+                        )
+                    }(value)
+                )
+            }(value)
+        )
+    }
+
+ //최종
+ function compose(funcArr){
+     return funcArr.reduec(
+         function(prevFunc, nextFunc){
+             return function(value){
+                 return next(prevFunc(value))
+             }
+         },
+         function(k) {return k}
+     )
+ }
+ 
+ const formularWithCompose = compose([multiplyTwo, multiplyThree, addFour])
+
+```
+... ro어렵잖아...
+이곳은 공부를 좀 더 해야겠다...
+후..
+
 
 
 

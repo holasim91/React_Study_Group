@@ -17,30 +17,27 @@ EX)
                 function multiplyTwo(a){
                     return multiply(a,2)
                 }
- ```
-                위의 함수는 multiply()의 함수를 재활용하여 a에 2를 곱한 값을 반환한다.
-                이를 응용하면 n배 함수를 생성시켜주는 커링 함수를 만들 수 있다!
+ /*               위의 함수는 multiply()의 함수를 재활용하여 a에 2를 곱한 값을 반환한다.
+                이를 응용하면 n배 함수를 생성시켜주는 커링 함수를 만들 수 있다! */
 
                 function multiplyX(x){
                     return function(a){
                         return multiply(a,x)
                     }
                 }
-
-                이걸 화살표 함수로 바꿔서 표현하면
+               // 이걸 화살표 함수로 바꿔서 표현하면
                 const multiplyX = x => a => multiply(a,x)
-
-                multiplyX() 함수는 인자 x를 받아 이름 없는 함수를 반환하고, 이름 없는 함수는 다시 인자 a를 받아 multply(a, x)를 실행한 값을 반환한다.
-                인자를 나눠 받아 함수를 실행하는 구성.
+            /* multiplyX() 함수는 인자 x를 받아 이름 없는 함수를 반환하고, 이름 없는 함수는 다시 인자 a를 받아 multply(a, x)를 실행한 값을 반환한다.
+                인자를 나눠 받아 함수를 실행하는 구성. */
 
                 const multiplyThree = multiplyX(4)
                 const result = multiplyThree(3) // 3 * 4 = 12
-                처음에 multiplyX() 함수에 4를 받아서 multiplyThree변수에 할당하고, 그 변수에 들어있는 함수는 인자 a에 3을 받아서 multply(4, 3)을 실행한 값을 출력한다. 
+            /*    처음에 multiplyX() 함수에 4를 받아서 multiplyThree변수에 할당하고, 그 변수에 들어있는 함수는 인자 a에 3을 받아서 multply(4, 3)을 실행한 값을 출력한다. */
 
-                그리고 중간에 있는 함수 선언을 건너뛰고 결괏값을 얻을 수도 있다.
-                const result = multiplyX(4)(3)
-
-                여기서 다시 한 번 싱기하자..
+            //중간에 있는 함수 선언을 건너뛰고 결괏값을 얻을 수도 있다.
+            const result = multiplyX(4)(3)
+```               
+                여기서 다시 한 번 상기하자..
                 커링의 장점은 '인자를 나누어 받을 수 있다!!'는 것을..
 
                 EX 2)

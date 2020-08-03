@@ -88,6 +88,7 @@ reduce()를 사용하면 함수를 조합하는 함수를 만들 수 있다.
         return multiplyTwo((k => k)(value))
     }
 
+
 // 2. 1의 결괏값과  multiplyThree()함수의 조합
     function(value){
         return multiplyThree(
@@ -98,6 +99,7 @@ reduce()를 사용하면 함수를 조합하는 함수를 만들 수 있다.
             }(value)
         )
     }
+
 
 // 3. 2의 결괏값과  addFour()함수의 조합
     function(value){
@@ -114,6 +116,7 @@ reduce()를 사용하면 함수를 조합하는 함수를 만들 수 있다.
         )
     }
 
+
  //최종
  function compose(funcArr){
      return funcArr.reduec(
@@ -125,6 +128,7 @@ reduce()를 사용하면 함수를 조합하는 함수를 만들 수 있다.
          function(k) {return k}
      )
  }
+ 
  
  const formularWithCompose = compose([multiplyTwo, multiplyThree, addFour])
 

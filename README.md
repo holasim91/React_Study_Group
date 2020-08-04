@@ -2,8 +2,8 @@
 ## 1. 하이오더 컴포넌트 (HighOrder Component HOC)
 ###  1-1 커링(Currying)
 
-나는 이미 4장에서 withStyles()로 커링을 사용했었다(?!).
-커링은 반환값이 함수인 디자인 패턴을 말하며, 중복된 코드를 반복하지 않고 원하는 기능을 조합하여 적재적소에 사용할 수 있다는 장점이 있다.
+나는 이미 4장에서 withStyles()로 커링을 사용했었다(?!).  
+커링은 *** 반환값이 함수인 디자인 패턴을 말하며, 중복된 코드를 반복하지 않고 원하는 기능을 조합하여 적재적소에 사용할 수 있다 ***는 장점이 있다.
 
 EX)
 ```js
@@ -76,7 +76,7 @@ reduce()를 사용하면 함수를 조합하는 함수를 만들 수 있다.(red
     // 1.
     //배열로 전달할 커링 함수들을 하나로 조합하기위해 구성한 함수
     [multiplyTwo, multiplyThree, addFour].reduce(
-        function(prevFunc, nextFunc){
+        function(prevFunc, nextFunc){ //prevFunc는 이전 반환된 함수 nextFunc는 현재 배열 순환 순서인 함수
         return function(value){
             return nextFunc(prevFunc(value))
         }     
@@ -135,7 +135,22 @@ reduce()를 사용하면 함수를 조합하는 함수를 만들 수 있다.(red
 
 ```
 
-영상 시청 후 업데이트 예정...(과거의 것도)
+이것을 좀 더 응용하면...
+
+```js
+    function compose(...args){
+        return args.reduce(function(prevFunc, nextFunc){
+            return function(...values){
+                return prevFunc(...values)
+            }
+        }, k => k)
+    }
+
+    const formular = compose(multiplyX(2), multiplyX(3), addX(4))
+```
+참고로 오픈소스로 많은 라이브러리에 포함되어있기 때문에 그냥 갖다쓰면 된다. 
+
+
 
 
 

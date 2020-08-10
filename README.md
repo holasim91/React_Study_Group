@@ -4,6 +4,8 @@
 
 예를들어,
 App 컴포넌트 하위에 Header 컴포넌트, 그리고 Header 컴포넌트 하위에 Button 컴포넌트가 있다고 생각해보자.
+![image](https://user-images.githubusercontent.com/46669567/89795065-e5fc0c00-db62-11ea-8380-453a4d7a9980.png)
+
 
 **App.js**
 ```js

@@ -65,7 +65,7 @@ export default Button
 보다시피 Header컴포넌트는 아무런 관련도 없는 데이터를 다른 컴포넌트에 넘겨주고 있다.  
 이러한 불필요한 행위를 **Context API**를 사용해 줄여보자
 
-***context.js***
+**context.js**
 ```js
 import React from 'react';
 
@@ -75,7 +75,7 @@ export const BtnColorContext = React.createContext('red');
 ```
 
 
-***App.js***
+**App.js**
 ```js
 import React from 'react';
 import Header from './Header';
@@ -94,7 +94,7 @@ function App() {
 export default App;
 ```
 
-***Header.js***
+**Header.js**
 ```js
 import React from "react";
 import Button from "./Button";
@@ -112,7 +112,7 @@ const Header = () => {
 export default Header;
 ```
 
-***Button.js***
+**Button.js**
 ```js
 import React, { useContext } from 'react'
 import { BtnColorContext } from './context'

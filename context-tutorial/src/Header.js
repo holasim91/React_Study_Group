@@ -1,13 +1,12 @@
 import React from "react";
 import Button from "./Button";
 
-const Header = (props) => {
+const Header = () => {
   return (
     <header>
       <h1>Title</h1>
-      {console.log(props.BtnColor)}
-      <Button BtnColor={props.BtnColor} />
-      {/* 부모로부터 전달 받은 버튼의 색상을 버튼에게 전달 */}
+      <Button/>
+      {/* 이제 이 곳은 전달할 데이터가 없으니 비워놓는다 */}
     </header>
   );
 };

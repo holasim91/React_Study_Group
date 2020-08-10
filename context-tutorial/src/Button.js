@@ -1,11 +1,16 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { BtnColorContext } from './context'
 
-const Button = (props) => {
+
+const Button = () => {
+    const BtnColor = useContext(BtnColorContext)
     return (
-        <button type='button' style={{background:props.BtnColor}}>
+        <button type='button' style={{backgroundColor:BtnColor}}>
             Button
         </button>
-        // 부모가 전달한 버튼의 색상을 헤더를 거쳐 받음
+        // App 컴포넌트에서 생성한 Context object를 import한 후,
+        //useContext()를 사용하여 value값을 가지고 올 수 있다.
+
     )
 }
 

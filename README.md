@@ -70,9 +70,9 @@ export default Button
 import React from 'react';
 
 export const BtnColorContext = React.createContext('red');
-//React.createContext()를 사용해서 context 객체를 만들어서 export한다
-// 만약 이 context를 구독했는데 Provider가 존재하지 않는다면 default 값(red)이 적용된다
 ```
+context.js파일을 만들고, React 패키지에서 제공하는 createContext라는 함수를 사용하고  
+디폴트 데이터(여기선 red)를 설정해주자 
 
 
 **App.js**
@@ -83,16 +83,16 @@ import { BtnColorContext } from './context';
 
 function App() {
   return (
-    <BtnColorContext.Provider value="yellow">
+    <BtnColorContext.Provider value="yellow"> {/* */}
       <Header /> 
     </BtnColorContext.Provider>
-    //최상위 컴포넌트에서 Context객체를 임포트하고 Provider로 감싸주고,
-    //하위 컴포넌트에게 전달할 데이터를 입력한다
   );
 }
 
 export default App;
 ```
+이렇게 Provider로 감싸져 있는 컴포넌트라면 어떤 컴포넌트라도 React Context에 접근 할 수 있다.
+여기서 value값을 설정하지 않는다면 context.js에서 설정한 디폴트 값이 전달된다
 
 **Header.js**
 ```js
@@ -104,8 +104,8 @@ const Header = () => {
     <header>
       <h1>Title</h1>
       <Button/>
-      {/* 이제 이 곳은 전달할 데이터가 없으니 비워놓는다 */}
     </header>
+    //  이제 이 곳은 전달할 데이터가 없으니 비워놓는다
   );
 };
 
@@ -124,15 +124,16 @@ const Button = () => {
         <button type='button' style={{backgroundColor:BtnColor}}>
             Button
         </button>
-        // App 컴포넌트에서 생성한 Context object를 import한 후,
-        //useContext()를 사용하여 value값을 가지고 올 수 있다.
-
     )
 }
 
 export default Button
 ```
+우선 App 컴포넌트에서 생성한 Context object를 import한 후
+React Hooks에서 제공하는 useContext()를 사용해서 데이터를 가져올 수 있다.
  
-
-
+* * *
+## 주의할 점
+React Context는 꼭 본연의 용도에 맞는 상황에서만 사용해야만한다.
+왜냐하면 React Context를 사용하게 되면 해당 컴포넌트는 해당 Context가 없이는 재사용이 어렵기 때문이다.
 
